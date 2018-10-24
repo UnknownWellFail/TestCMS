@@ -1,0 +1,39 @@
+@{
+    Layout = null;
+}
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оформление заказа</title>
+</head>
+<body>
+<div>
+    <h3>Форма оформления покупки</h3>
+    <p>Для оформления покупки заполните следующие поля:</p>
+    <form method="post">
+        <input type="hidden" value="@ViewBag.PhoneId" name="PhoneId" />
+        <table>
+            <tr>
+                <td>Имя:</td>
+                <td><input type="text" name="Name" /> </td>
+            </tr>
+            <tr>
+                <td>Категория:</td>
+                <td><input type="text" name="Category" /></td>
+            </tr>
+            <tr>
+                <td>Х:</td>
+                <td><input type="number" name="X" /></td>
+            </tr>
+            
+            <tr>
+                <td>Y:</td>
+                <td><input type="number" name="Y" /></td>
+            </tr>
+            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
