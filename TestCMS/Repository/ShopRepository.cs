@@ -43,6 +43,24 @@ namespace TestCMS.Models
                 return db.Query<Shop>("SELECT * FROM Shops WHERE id = @id", new { id }).FirstOrDefault();
             }
         }
+
+        public IEnumerable<Shop> Get(string category)
+        {
+            using (IDbConnection db = Connection)
+            {
+                return db.Query<Shop>("SELECT * FROM Shops WHERE category= @category", new { category});
+            }
+
+        }
+        
+        public IEnumerable<Shop> Get(double x, double y)
+        {
+            using (IDbConnection db = Connection)
+            {
+                return db.Query<Shop>("SELECT * FROM Shops WHERE x= @x AND y= @y", new { x,y});
+            }
+
+        }
  
         public void Create(Shop shop)
         {
@@ -50,11 +68,6 @@ namespace TestCMS.Models
             {
                 var sqlQuery = "INSERT INTO Shops (Name, category, x,y) VALUES(@Name, @Category, @X,@Y)";
                 db.Execute(sqlQuery, shop);
- 
-                // если мы хотим получить id добавленного пользователя
-                //var sqlQuery = "INSERT INTO Users (Name, Age) VALUES(@Name, @Age); SELECT CAST(SCOPE_IDENTITY() as int)";
-                //int? userId = db.Query<int>(sqlQuery, user).FirstOrDefault();
-                //user.Id = userId.Value;
             }
         }
  

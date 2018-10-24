@@ -20,5 +20,5 @@
 /home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/TestCMS.dll
 /home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/TestCMS.pdb
 /home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/TestCMS.csproj.CopyComplete
-/home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/Razor/Views/Main/Index.g.cshtml.cs
-/home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/Razor/Views/Main/Create.g.cshtml.cs
+/home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/Razor/Views/Shop/Create.g.cshtml.cs
+/home/wellfail/RiderProjects/TestCMS/TestCMS/obj/Debug/netcoreapp2.1/Razor/Views/Shop/Index.g.cshtml.cs

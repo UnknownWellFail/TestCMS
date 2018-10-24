@@ -6,7 +6,8 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="TestCMS" t="IncludeRecursive">
         <e p="Controllers" t="Include">
-          <e p="MainController.cs" t="Include" />
+          <e p="ShopController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="BaseEntity.cs" t="Include" />
@@ -26,8 +27,11 @@
         <e p="Startup.cs" t="Include" />
         <e p="TestCMS.csproj" t="IncludeRecursive" />
         <e p="Views" t="Include">
-          <e p="Main" t="Include">
+          <e p="Shop" t="Include">
             <e p="Create.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="User" t="Include">
             <e p="Index.cshtml" t="Include" />
           </e>
         </e>
