@@ -50,6 +50,21 @@
         <e p="wwwroot" t="Include" />
       </e>
       <e p="TestCMS.sln" t="IncludeFlat" />
+      <e p="TestCMSClient" t="IncludeRecursive">
+        <e p="BaseEntity.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Shop.cs" t="Include" />
+        <e p="TestCMSClient.csproj" t="IncludeRecursive" />
+        <e p="User.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="TestCMSClient.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>

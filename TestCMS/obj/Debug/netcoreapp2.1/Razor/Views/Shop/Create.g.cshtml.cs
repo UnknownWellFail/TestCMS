@@ -49,7 +49,7 @@ namespace AspNetCore
             WriteLiteral(" \n<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(49, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6be39787bcb645239e0874ee5ffa4686", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "471d097a5d1c4eaea337925f458d5e37", async() => {
                 BeginContext(55, 38, true);
                 WriteLiteral("\n    <title>Оформление заказа</title>\n");
                 EndContext();
@@ -69,7 +69,7 @@ namespace AspNetCore
             WriteLiteral("\n");
             EndContext();
             BeginContext(101, 863, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eef5aa267f5042c1aed7329be8d3a2a6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cc6786e5dd44eb29d5c51ef6aec3e19", async() => {
                 BeginContext(107, 158, true);
                 WriteLiteral("\n<div>\n    <h3>Форма оформления покупки</h3>\n    <p>Для оформления покупки заполните следующие поля:</p>\n    <form method=\"post\">\n        <input type=\"hidden\"");
                 EndContext();

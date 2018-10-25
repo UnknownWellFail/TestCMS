@@ -9,7 +9,6 @@ namespace TestCMS.Services
 {
     public class UserService
     {
-        
         private readonly UserRepository userRepository;
         private IMemoryCache cache;
 
@@ -18,7 +17,7 @@ namespace TestCMS.Services
             userRepository = new UserRepository(configuration);
             cache = memoryCache;
         }
-        
+
         public async Task<IEnumerable<User>> GetUsers()
         {
             IEnumerable<User> users = null;
@@ -31,10 +30,11 @@ namespace TestCMS.Services
                         new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(5)));
                 }
             }
+
             return users;
         }
-        
-        
+
+
         public void updateUser(User user)
         {
             userRepository.Update(user);
@@ -49,6 +49,5 @@ namespace TestCMS.Services
         {
             userRepository.Create(user);
         }
-
     }
 }
