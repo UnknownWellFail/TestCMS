@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using TestCMS.Models;
 using TestCMS.Repository;
+using TestCMS.Services;
 
 
 namespace TestCMS.Controllers
@@ -11,18 +12,19 @@ namespace TestCMS.Controllers
     public class UserController : Controller
     {
       
-        private readonly UserRepository userRepository;
- 
-        public UserController(IConfiguration configuration)
+        private UserService userService;
+
+        public UserController(IConfiguration configuration,UserService service)
         {
-            userRepository = new UserRepository(configuration);
+            userService = service;
+
         }
      
         
         //GET all shops
         public string AllUsers()
         {
-            return JsonConvert.SerializeObject(userRepository.GetAll());
+            return JsonConvert.SerializeObject(userService.GetUsers());
         }
 
         [HttpPost]
@@ -31,7 +33,7 @@ namespace TestCMS.Controllers
             User usr = JsonConvert.DeserializeObject<User>(user);
             if (ModelState.IsValid)
             {
-                userRepository.Delete(usr.id);
+                userService.removeUser(usr);
                 return "Successful";
             }
 
@@ -45,7 +47,7 @@ namespace TestCMS.Controllers
             
             if (ModelState.IsValid)
             {
-                userRepository.Update(usr);
+                userService.updateUser(usr);
                 return "Successful";
             }
             
@@ -59,7 +61,7 @@ namespace TestCMS.Controllers
             
             if (ModelState.IsValid)
             {
-                userRepository.Create(usr);
+                userService.addUser(usr);
                 return "Successful";
             }
             

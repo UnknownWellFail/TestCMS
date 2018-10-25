@@ -8,7 +8,7 @@ namespace TestCMS.Repository
         void Create(T t);
         void Delete(int id);
         T Get(int id);
-        List<T> GetAll();
+        IEnumerable<T> GetAll();
         void Update(T t);
         
     }

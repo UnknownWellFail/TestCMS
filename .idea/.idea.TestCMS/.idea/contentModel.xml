@@ -24,6 +24,10 @@
           <e p="ShopRepository.cs" t="Include" />
           <e p="UserRepository.cs" t="Include" />
         </e>
+        <e p="Services" t="Include">
+          <e p="ShopService.cs" t="Include" />
+          <e p="UserService.cs" t="Include" />
+        </e>
         <e p="Startup.cs" t="Include" />
         <e p="TestCMS.csproj" t="IncludeRecursive" />
         <e p="Views" t="Include">

@@ -28,11 +28,11 @@ namespace TestCMS.Models
             }
         }
         
-        public List<Shop> GetAll()
+        public IEnumerable<Shop> GetAll()
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Shop>("SELECT * FROM Shops").ToList();
+                return db.Query<Shop>("SELECT * FROM Shops");
             }
         }
  

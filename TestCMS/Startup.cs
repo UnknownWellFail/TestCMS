@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TestCMS.Models;
+using TestCMS.Services;
 
 
 namespace TestCMS
@@ -20,8 +21,10 @@ namespace TestCMS
          
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddTransient<ShopService>();
+            services.AddTransient<UserService>();
 
+            services.AddMemoryCache();
             services.AddMvc();
         }
          

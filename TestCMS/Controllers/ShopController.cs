@@ -3,17 +3,18 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using TestCMS.Models;
 using TestCMS.Repository;
+using TestCMS.Services;
 
 
 namespace TestCMS.Controllers
 {
     public class ShopController : Controller
     {
-        private readonly ShopRepository shopRepository;
-
-        public ShopController(IConfiguration configuration)
+        private ShopService shopService;
+        
+        public ShopController(IConfiguration configuration,ShopService service)
         {
-            shopRepository = new ShopRepository(configuration);
+            shopService = service;
         }
 
         public IActionResult Create()
@@ -24,20 +25,20 @@ namespace TestCMS.Controllers
         //GET all shops
         public string AllShops()
         {
-            return JsonConvert.SerializeObject(shopRepository.GetAll());
+            return JsonConvert.SerializeObject(shopService.GetShops());
         }
 
 
         //GET shop by category
         public string AllShopCategory(string category)
         {
-            return JsonConvert.SerializeObject(shopRepository.Get(category));
+            return JsonConvert.SerializeObject(shopService.getShopCategory(category));
         }
 
         //GET shop by category
         public string AllShopPlace(double x, double y)
         {
-            return JsonConvert.SerializeObject(shopRepository.Get(x, y));
+            return JsonConvert.SerializeObject(shopService.getShopPlace(x, y));
         }
 
         [HttpPost]
@@ -46,7 +47,7 @@ namespace TestCMS.Controllers
             Shop sh = JsonConvert.DeserializeObject<Shop>(shop);
             if (ModelState.IsValid)
             {
-                shopRepository.Update(sh);
+                shopService.updateShop(sh);
                 return "Successful";
             }
 
@@ -59,7 +60,7 @@ namespace TestCMS.Controllers
             Shop sh = JsonConvert.DeserializeObject<Shop>(shop);
             if (ModelState.IsValid)
             {
-                shopRepository.Delete(sh.id);
+                shopService.removeShop(sh);
                 return "Successful";
             }
 
@@ -73,7 +74,7 @@ namespace TestCMS.Controllers
 
             if (ModelState.IsValid)
             {
-                shopRepository.Create(sh);
+                shopService.addShop(sh);
                 return "Successful";
             }
 

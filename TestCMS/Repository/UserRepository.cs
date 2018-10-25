@@ -26,11 +26,11 @@ namespace TestCMS.Models
                 return new NpgsqlConnection(connectionString);
             }
         }
-        public List<User> GetAll()
+        public IEnumerable<User> GetAll()
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<User>("SELECT * FROM Users").ToList();
+                return db.Query<User>("SELECT * FROM Users");
             }
         }
  
