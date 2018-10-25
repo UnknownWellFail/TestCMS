@@ -1,0 +1,11 @@
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/bin/Debug/netcoreapp2.1/TestCMSClient.deps.json
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/bin/Debug/netcoreapp2.1/TestCMSClient.runtimeconfig.json
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/bin/Debug/netcoreapp2.1/TestCMSClient.runtimeconfig.dev.json
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/bin/Debug/netcoreapp2.1/TestCMSClient.dll
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/bin/Debug/netcoreapp2.1/TestCMSClient.pdb
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/obj/Debug/netcoreapp2.1/TestCMSClient.csprojAssemblyReference.cache
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/obj/Debug/netcoreapp2.1/TestCMSClient.csproj.CoreCompileInputs.cache
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/obj/Debug/netcoreapp2.1/TestCMSClient.AssemblyInfoInputs.cache
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/obj/Debug/netcoreapp2.1/TestCMSClient.AssemblyInfo.cs
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/obj/Debug/netcoreapp2.1/TestCMSClient.dll
+/home/wellfail/RiderProjects/TestCMS/TestCMSClient/obj/Debug/netcoreapp2.1/TestCMSClient.pdb
