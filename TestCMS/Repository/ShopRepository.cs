@@ -23,14 +23,14 @@ namespace TestCMS.Models
             get { return new NpgsqlConnection(connectionString); }
         }
 
-        public void AddFavorite(int user_id, int shop_id)
+        public void AddFavorite(int users_id, int shops_id)
         {
             using (IDbConnection db = Connection)
             {
                 try
                 {
-                    db.Execute("INSERT IGNORE INTO favorites (user_id, shop_id) VALUES(@user_id, @shop_id)",
-                        new {user_id, shop_id});
+                    db.Execute("INSERT  INTO favorites (users_id, shops_id) VALUES(@users_id, @shops_id)",
+                        new {users_id, shops_id});
                 }
                 catch (Exception ex)
                 {
@@ -45,8 +45,8 @@ namespace TestCMS.Models
             using (IDbConnection db = Connection)
             {
                 return db.Query<Favorite>(
-                    "SELECT nickname, avatar_path, name from favorites inner join shops on (favorites.shop_id = shops.id) inner join users on" +
-                    "(favorites.user_id = users.id) where user_id = @user_id", new {user_id});
+                    "SELECT nickname, avatar_path, name from favorites inner join shops on (favorites.shops_id = shops.id) inner join users on" +
+                    "(favorites.users_id = users.id) where users_id = @user_id", new {user_id});
             }
         }
 

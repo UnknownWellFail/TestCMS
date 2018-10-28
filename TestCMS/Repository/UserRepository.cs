@@ -42,7 +42,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                var sqlQuery = "INSERT INTO users (nickname, raiting) VALUES(@nickname, @raiting)";
+                var sqlQuery = "INSERT INTO users (nickname, avatar_path, raiting) VALUES(@nickname,@avatarpath, @raiting)";
                 db.Execute(sqlQuery, user);
             }
         }
