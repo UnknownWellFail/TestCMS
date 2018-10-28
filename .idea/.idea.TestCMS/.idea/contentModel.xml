@@ -9,6 +9,11 @@
           <e p="ShopController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
         </e>
+        <e p="Migrations" t="Include">
+          <e p="CreateFavorites.cs" t="Include" />
+          <e p="CreateShops.cs" t="Include" />
+          <e p="CreateUsers.cs" t="Include" />
+        </e>
         <e p="Models" t="Include">
           <e p="BaseEntity.cs" t="Include" />
           <e p="Favorite.cs" t="Include" />
