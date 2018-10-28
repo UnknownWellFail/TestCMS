@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -16,12 +17,13 @@ namespace TestCMS.Controllers
             userService = service;
         }
 
-        //GET all shops
+        //Get all users
         public string AllUsers()
         {
             return JsonConvert.SerializeObject(userService.GetUsers().GetAwaiter().GetResult());
         }
 
+        //Remove User from database by id
         public string DeleteUser(int id)
         {
             Console.WriteLine(id);
@@ -34,6 +36,7 @@ namespace TestCMS.Controllers
             return "Error";
         }
 
+        //Update user in database by id
         public string PutUser([FromBody] User user)
         {
             if (ModelState.IsValid)
@@ -45,6 +48,7 @@ namespace TestCMS.Controllers
             return "Error";
         }
 
+        //Add user to database
         public string PostUser([FromBody] User user)
         {
             if (ModelState.IsValid)
@@ -55,5 +59,6 @@ namespace TestCMS.Controllers
 
             return "Error";
         }
+     
     }
 }

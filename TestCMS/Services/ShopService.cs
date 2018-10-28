@@ -99,9 +99,9 @@ namespace TestCMS.Services
             _shopRepository.Create(shop);
         }
 
-        public void AddFavorite(int user_id, int shop_id)
+        public string AddFavorite(int user_id, int shop_id)
         {
-            _shopRepository.AddFavorite(user_id, shop_id);
+            return _shopRepository.AddFavorite(user_id, shop_id);
         }
     }
 }

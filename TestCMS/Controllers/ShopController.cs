@@ -16,30 +16,32 @@ namespace TestCMS.Controllers
             shopService = service;
         }
 
+        //Get all favorites for user
         public string Favorites(int id)
         {
             return JsonConvert.SerializeObject(shopService.GetFavorites(id).GetAwaiter().GetResult());
         }
 
-        //GET all shops
+        //Get all shops
         public string AllShops()
         {
             return JsonConvert.SerializeObject(shopService.GetShops().GetAwaiter().GetResult());
         }
 
 
-        //GET shop by category
+        //Get shop by category
         public string AllShopCategory(string category)
         {
             return JsonConvert.SerializeObject(shopService.GetShopCategory(category).GetAwaiter().GetResult());
         }
 
-        //GET shop by category
+        //Get shop by location
         public string AllShopPlace(double x, double y)
         {
             return JsonConvert.SerializeObject(shopService.GetShopPlace(x, y).GetAwaiter().GetResult());
         }
 
+        //Update shop
         public string PutShop([FromBody] Shop shop)
         {
             if (ModelState.IsValid)
@@ -51,7 +53,7 @@ namespace TestCMS.Controllers
             return "Error";
         }
 
-
+        //Delete shop
         public string DeleteShop(int id)
         {
             shopService.RemoveShop(id);
@@ -59,6 +61,7 @@ namespace TestCMS.Controllers
         }
 
 
+        //Add shop
         public string PostShop([FromBody] Shop shop)
         {
             if (ModelState.IsValid)
@@ -70,11 +73,10 @@ namespace TestCMS.Controllers
             return "Error";
         }
 
-
+        //Add favorites for user
         public string PostFavorite([FromBody] KeyValuePair<int, int> favorites)
         {
-            shopService.AddFavorite(favorites.Key, favorites.Value);
-            return "Success";
+            return shopService.AddFavorite(favorites.Key, favorites.Value);
         }
     }
 }

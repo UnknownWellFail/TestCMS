@@ -1,7 +1,9 @@
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace TestCMSClient.Client
@@ -65,24 +67,5 @@ namespace TestCMSClient.Client
             return response.StatusCode;
         }
 
-        public void SendFile()
-        {
-            try
-            {
-                WebClient client = new WebClient();
-
-          
-
-                Uri addy = new Uri("http://localhost:5000/User/");
-
-                byte[] arrReturn = client.UploadFile(addy, "test");
-                Console.WriteLine(arrReturn.ToString());
-
-            }
-            catch (Exception ex1)
-            {
-                Console.WriteLine(ex1.Message);
-            }
-        }
     }
 }

@@ -23,7 +23,7 @@ namespace TestCMS.Models
             get { return new NpgsqlConnection(connectionString); }
         }
 
-        public void AddFavorite(int users_id, int shops_id)
+        public string AddFavorite(int users_id, int shops_id)
         {
             using (IDbConnection db = Connection)
             {
@@ -31,12 +31,12 @@ namespace TestCMS.Models
                 {
                     db.Execute("INSERT  INTO favorites (users_id, shops_id) VALUES(@users_id, @shops_id)",
                         new {users_id, shops_id});
+                    return "Success";
                 }
                 catch (Exception ex)
                 {
-                    
+                    return "Error on insert";
                 }
-                //TODO Change it
             }
         }
 
@@ -78,7 +78,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Shop>("SELECT * FROM shops WHERE x= @x AND y= @y", new {x, y});
+                return db.Query<Shop>("SELECT * FROM shops WHERE sqrt(power((x-@x),2) + power((y-@y),2) ) < 10", new {x, y});
             }
         }
 
@@ -87,6 +87,7 @@ namespace TestCMS.Models
             using (IDbConnection db = Connection)
             {
                 var sqlQuery = "INSERT INTO shops (name, category, x,y) VALUES(@name, @category, @x,@y)";
+                
                 db.Execute(sqlQuery, shop);
             }
         }
