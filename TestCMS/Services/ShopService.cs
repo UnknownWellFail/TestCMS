@@ -21,6 +21,22 @@ namespace TestCMS.Services
             cache = memoryCache;
         }
 
+        public async Task<IEnumerable<Favorite>> getFavorites(int id)
+        {
+            IEnumerable<Favorite> favorites = null;
+            if (!cache.TryGetValue("favorites", out favorites))
+            {
+                favorites = await Task.FromResult(shopRepository.getFavorites(id));
+                if (favorites != null)
+                {
+                    cache.Set("favorites", favorites,
+                        new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(5)));
+                }
+            }
+
+            return favorites;
+        }
+
         public async Task<IEnumerable<Shop>> GetShops()
         {
             IEnumerable<Shop> shops = null;
@@ -76,14 +92,19 @@ namespace TestCMS.Services
             shopRepository.Update(shop);
         }
 
-        public void removeShop(Shop shop)
+        public void removeShop(int id)
         {
-            shopRepository.Delete(shop.id);
+            shopRepository.Delete(id);
         }
 
         public void addShop(Shop shop)
         {
             shopRepository.Create(shop);
+        }
+
+        public void AddFavorite(int user_id, int shop_id)
+        {
+            shopRepository.AddFavorite(user_id, shop_id);
         }
     }
 }

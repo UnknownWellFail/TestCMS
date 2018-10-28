@@ -11,6 +11,7 @@
         </e>
         <e p="Models" t="Include">
           <e p="BaseEntity.cs" t="Include" />
+          <e p="Favorite.cs" t="Include" />
           <e p="Shop.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
@@ -30,16 +31,8 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="TestCMS.csproj" t="IncludeRecursive" />
-        <e p="Views" t="Include">
-          <e p="Shop" t="Include">
-            <e p="Create.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-          </e>
-          <e p="User" t="Include">
-            <e p="Index.cshtml" t="Include" />
-          </e>
-        </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="database.sql" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.1" t="Include">
@@ -51,11 +44,18 @@
       </e>
       <e p="TestCMS.sln" t="IncludeFlat" />
       <e p="TestCMSClient" t="IncludeRecursive">
-        <e p="BaseEntity.cs" t="Include" />
+        <e p="Client" t="Include">
+          <e p="Client.cs" t="Include" />
+          <e p="RequestsManager.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="BaseEntity.cs" t="Include" />
+          <e p="Favorite.cs" t="Include" />
+          <e p="Shop.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
         <e p="Program.cs" t="Include" />
-        <e p="Shop.cs" t="Include" />
         <e p="TestCMSClient.csproj" t="IncludeRecursive" />
-        <e p="User.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

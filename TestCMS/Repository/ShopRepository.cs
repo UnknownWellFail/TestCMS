@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,20 +12,36 @@ using TestCMS.Repository;
 namespace TestCMS.Models
 {
 
-    
+
     public class ShopRepository : IRepository<Shop>
     {
         string connectionString = null;
+
         public ShopRepository(IConfiguration configuration)
         {
             connectionString = configuration.GetConnectionString("DefaultConnection");
         }
-        
+
         internal IDbConnection Connection
         {
-            get
+            get { return new NpgsqlConnection(connectionString); }
+        }
+
+        public void AddFavorite(int user_id, int shop_id)
+        {Console.WriteLine(user_id);
+            Console.WriteLine(shop_id);
+            using (IDbConnection db = Connection)
             {
-                return new NpgsqlConnection(connectionString);
+                db.Execute("INSERT INTO favorites (user_id, shop_id) VALUES(@user_id, @shop_id)",new {user_id,shop_id});
+            }
+        }
+
+    public IEnumerable<Favorite> getFavorites(int user_id)
+        {
+            using (IDbConnection db = Connection)
+            {
+                return db.Query<Favorite>("SELECT nickname, avatar_path, name from favorites inner join shops on (favorites.shop_id = shops.id) inner join users on" +
+                                          "(favorites.user_id = users.id) where user_id = @user_id",new{user_id});
             }
         }
         
@@ -57,7 +74,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Shop>("SELECT * FROM Shops WHERE x= @x AND y= @y", new { x,y});
+                return db.Query<Shop>("SELECT * FROM shops WHERE x= @x AND y= @y", new { x,y});
             }
 
         }
@@ -66,7 +83,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                var sqlQuery = "INSERT INTO Shops (Name, category, x,y) VALUES(@Name, @Category, @X,@Y)";
+                var sqlQuery = "INSERT INTO shops (name, category, x,y) VALUES(@name, @category, @x,@y)";
                 db.Execute(sqlQuery, shop);
             }
         }
@@ -75,7 +92,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                var sqlQuery = "UPDATE Shops SET Name = @Name, Age = @Age WHERE Id = @Id";
+                var sqlQuery = "UPDATE shops SET name = @name, category = @category, x = @x, y = @y WHERE id = @id";
                 db.Execute(sqlQuery, shop);
             }
         }
@@ -84,7 +101,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                var sqlQuery = "DELETE FROM Shops WHERE Id = @id";
+                var sqlQuery = "DELETE FROM shops WHERE id = @id";
                 db.Execute(sqlQuery, new { id });
             }
         }

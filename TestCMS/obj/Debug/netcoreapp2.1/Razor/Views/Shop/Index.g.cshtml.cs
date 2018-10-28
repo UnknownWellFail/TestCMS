@@ -50,7 +50,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\n \n<html>\n");
             EndContext();
             BeginContext(136, 50, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c98c43995ca43c490a538c7d7874857", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c34e030ed0c420792b593db1ca8ff6f", async() => {
                 BeginContext(142, 37, true);
                 WriteLiteral("\n    <title>Список заведений</title>\n");
                 EndContext();
@@ -70,7 +70,7 @@ namespace AspNetCore
             WriteLiteral("\n");
             EndContext();
             BeginContext(187, 383, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a1d6faf1a0f47d09a2ba8c1bee03f01", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "634a5470dd0f467f8158122770de774d", async() => {
                 BeginContext(193, 154, true);
                 WriteLiteral("\n<h3>Список заведений</h3>\n<table>\n    <tr>\n        <td>Название</td>\n        <td>Категория</td>\n        <td>X</td>\n        <td>Y</td>\n        \n    </tr>\n");
                 EndContext();

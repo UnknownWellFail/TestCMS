@@ -24,44 +24,39 @@ namespace TestCMS.Controllers
         //GET all shops
         public string AllUsers()
         {
-            return JsonConvert.SerializeObject(userService.GetUsers());
+            return JsonConvert.SerializeObject(userService.GetUsers().GetAwaiter().GetResult());
         }
 
-        [HttpPost]
-        public string removeUser(string user)
+     
+        public string RemoveUser([FromBody]int user)
         {
-            User usr = JsonConvert.DeserializeObject<User>(user);
             if (ModelState.IsValid)
             {
-                userService.removeUser(usr);
+                userService.removeUser(user);
                 return "Successful";
             }
 
             return "Error";
         }
 
-        [HttpPost]
-        public string updateUser(string user)
+
+        public string UpdateUser([FromBody]User user)
         {
-            User usr = JsonConvert.DeserializeObject<User>(user);
-            
             if (ModelState.IsValid)
             {
-                userService.updateUser(usr);
+                userService.updateUser(user);
                 return "Successful";
             }
             
             return "Error";
         }
         
-        [HttpPost]
-        public string addUser(string user)
+
+        public string AddUser([FromBody] User user)
         {
-            User usr = JsonConvert.DeserializeObject<User>(user);
-            
             if (ModelState.IsValid)
             {
-                userService.addUser(usr);
+                userService.addUser(user);
                 return "Successful";
             }
             

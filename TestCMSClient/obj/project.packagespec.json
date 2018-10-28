@@ -23,6 +23,10 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
+        "Microsoft.AspNet.WebApi.Client": {
+          "target": "Package",
+          "version": "[5.2.6, )"
+        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",

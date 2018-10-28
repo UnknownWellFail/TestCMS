@@ -46,7 +46,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                var sqlQuery = "INSERT INTO Users (Name, Age) VALUES(@Name, @Age)";
+                var sqlQuery = "INSERT INTO Users (nickname, raiting) VALUES(@nickname, @raiting)";
                 db.Execute(sqlQuery, user);
             }
         }
@@ -55,7 +55,7 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                var sqlQuery = "UPDATE Users SET Name = @Name, Age = @Age WHERE Id = @Id";
+                var sqlQuery = "UPDATE Users SET nickname = @nickname, raiting = @raiting WHERE id = @id";
                 db.Execute(sqlQuery, user);
             }
         }

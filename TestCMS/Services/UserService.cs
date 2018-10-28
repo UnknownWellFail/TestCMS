@@ -40,9 +40,9 @@ namespace TestCMS.Services
             userRepository.Update(user);
         }
 
-        public void removeUser(User user)
+        public void removeUser(int user)
         {
-            userRepository.Delete(user.id);
+            userRepository.Delete(user);
         }
 
         public void addUser(User user)
