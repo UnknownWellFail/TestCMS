@@ -25,12 +25,18 @@ namespace TestCMS.Models
 
         public void AddFavorite(int user_id, int shop_id)
         {
-            Console.WriteLine(user_id);
-            Console.WriteLine(shop_id);
             using (IDbConnection db = Connection)
             {
-                db.Execute("INSERT INTO favorites (user_id, shop_id) VALUES(@user_id, @shop_id)",
-                    new {user_id, shop_id});
+                try
+                {
+                    db.Execute("INSERT IGNORE INTO favorites (user_id, shop_id) VALUES(@user_id, @shop_id)",
+                        new {user_id, shop_id});
+                }
+                catch (Exception ex)
+                {
+                    
+                }
+                //TODO Change it
             }
         }
 
