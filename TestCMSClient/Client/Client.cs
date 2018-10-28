@@ -252,7 +252,6 @@ namespace TestCMSClient.Client
             }
         }
 
-
         public void SendAllShops()
         {
             string res = requestManager.GetRequest("Shop/AllShops").GetAwaiter().GetResult();
