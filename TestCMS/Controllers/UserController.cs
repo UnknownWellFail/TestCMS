@@ -27,7 +27,7 @@ namespace TestCMS.Controllers
             Console.WriteLine(id);
             if (ModelState.IsValid)
             {
-                userService.removeUser(id);
+                userService.RemoveUser(id);
                 return "Successful";
             }
 
@@ -38,7 +38,7 @@ namespace TestCMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                userService.updateUser(user);
+                userService.UpdateUser(user);
                 return "Successful";
             }
 
@@ -49,7 +49,7 @@ namespace TestCMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                userService.addUser(user);
+                userService.AddUser(user);
                 return "Successful";
             }
 

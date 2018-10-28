@@ -34,18 +34,17 @@ namespace TestCMS.Services
             return users;
         }
 
-
-        public void updateUser(User user)
+        public void UpdateUser(User user)
         {
             userRepository.Update(user);
         }
 
-        public void removeUser(int user)
+        public void RemoveUser(int user)
         {
             userRepository.Delete(user);
         }
 
-        public void addUser(User user)
+        public void AddUser(User user)
         {
             userRepository.Create(user);
         }

@@ -2,10 +2,10 @@ namespace TestCMS.Models
 {
     public class Shop:BaseEntity
     {
-        public int id{get;set;}
-        public string name{get;set;}
-        public string category{get;set;}
-        public double x{get;set;}
-        public double y{get;set;}
+        public int Id{get;set;}
+        public string Name{get;set;}
+        public string Category{get;set;}
+        public double X{get;set;}
+        public double Y{get;set;}
     }
 }

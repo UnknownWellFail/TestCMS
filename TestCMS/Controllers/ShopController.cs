@@ -18,7 +18,7 @@ namespace TestCMS.Controllers
 
         public string Favorites(int id)
         {
-            return JsonConvert.SerializeObject(shopService.getFavorites(id).GetAwaiter().GetResult());
+            return JsonConvert.SerializeObject(shopService.GetFavorites(id).GetAwaiter().GetResult());
         }
 
         //GET all shops
@@ -31,20 +31,20 @@ namespace TestCMS.Controllers
         //GET shop by category
         public string AllShopCategory(string category)
         {
-            return JsonConvert.SerializeObject(shopService.getShopCategory(category).GetAwaiter().GetResult());
+            return JsonConvert.SerializeObject(shopService.GetShopCategory(category).GetAwaiter().GetResult());
         }
 
         //GET shop by category
         public string AllShopPlace(double x, double y)
         {
-            return JsonConvert.SerializeObject(shopService.getShopPlace(x, y).GetAwaiter().GetResult());
+            return JsonConvert.SerializeObject(shopService.GetShopPlace(x, y).GetAwaiter().GetResult());
         }
 
         public string PutShop([FromBody] Shop shop)
         {
             if (ModelState.IsValid)
             {
-                shopService.updateShop(shop);
+                shopService.UpdateShop(shop);
                 return "Successful";
             }
 
@@ -54,7 +54,7 @@ namespace TestCMS.Controllers
 
         public string DeleteShop(int id)
         {
-            shopService.removeShop(id);
+            shopService.RemoveShop(id);
             return "Successful";
         }
 
@@ -63,7 +63,7 @@ namespace TestCMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                shopService.addShop(shop);
+                shopService.AddShop(shop);
                 return "Successful";
             }
 

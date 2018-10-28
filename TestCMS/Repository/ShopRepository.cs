@@ -40,7 +40,7 @@ namespace TestCMS.Models
             }
         }
 
-        public IEnumerable<Favorite> getFavorites(int user_id)
+        public IEnumerable<Favorite> GetFavorites(int user_id)
         {
             using (IDbConnection db = Connection)
             {

@@ -9,21 +9,21 @@ namespace TestCMS.Services
 {
     public class ShopService
     {
-        private readonly ShopRepository shopRepository;
+        private readonly ShopRepository _shopRepository;
         private IMemoryCache cache;
 
         public ShopService(IConfiguration configuration, IMemoryCache memoryCache)
         {
-            shopRepository = new ShopRepository(configuration);
+            _shopRepository = new ShopRepository(configuration);
             cache = memoryCache;
         }
 
-        public async Task<IEnumerable<Favorite>> getFavorites(int id)
+        public async Task<IEnumerable<Favorite>> GetFavorites(int id)
         {
             IEnumerable<Favorite> favorites = null;
             if (!cache.TryGetValue("favorites", out favorites))
             {
-                favorites = await Task.FromResult(shopRepository.getFavorites(id));
+                favorites = await Task.FromResult(_shopRepository.GetFavorites(id));
                 if (favorites != null)
                 {
                     cache.Set("favorites", favorites,
@@ -39,7 +39,7 @@ namespace TestCMS.Services
             IEnumerable<Shop> shops = null;
             if (!cache.TryGetValue("allShops", out shops))
             {
-                shops = await Task.FromResult(shopRepository.GetAll());
+                shops = await Task.FromResult(_shopRepository.GetAll());
                 if (shops != null)
                 {
                     cache.Set("allShops", shops,
@@ -50,12 +50,12 @@ namespace TestCMS.Services
             return shops;
         }
 
-        public async Task<IEnumerable<Shop>> getShopCategory(string category)
+        public async Task<IEnumerable<Shop>> GetShopCategory(string category)
         {
             IEnumerable<Shop> shops = null;
             if (!cache.TryGetValue(category, out shops))
             {
-                shops = await Task.FromResult(shopRepository.Get(category));
+                shops = await Task.FromResult(_shopRepository.Get(category));
                 if (shops != null)
                 {
                     cache.Set(category, shops,
@@ -66,14 +66,14 @@ namespace TestCMS.Services
             return shops;
         }
 
-        public async Task<IEnumerable<Shop>> getShopPlace(double x, double y)
+        public async Task<IEnumerable<Shop>> GetShopPlace(double x, double y)
         {
             KeyValuePair<double, double> location = new KeyValuePair<double, double>(x, y);
 
             IEnumerable<Shop> shops = null;
             if (!cache.TryGetValue(location, out shops))
             {
-                shops = await Task.FromResult(shopRepository.Get(x, y));
+                shops = await Task.FromResult(_shopRepository.Get(x, y));
                 if (shops != null)
                 {
                     cache.Set(location, shops,
@@ -84,24 +84,24 @@ namespace TestCMS.Services
             return shops;
         }
 
-        public void updateShop(Shop shop)
+        public void UpdateShop(Shop shop)
         {
-            shopRepository.Update(shop);
+            _shopRepository.Update(shop);
         }
 
-        public void removeShop(int id)
+        public void RemoveShop(int id)
         {
-            shopRepository.Delete(id);
+            _shopRepository.Delete(id);
         }
 
-        public void addShop(Shop shop)
+        public void AddShop(Shop shop)
         {
-            shopRepository.Create(shop);
+            _shopRepository.Create(shop);
         }
 
         public void AddFavorite(int user_id, int shop_id)
         {
-            shopRepository.AddFavorite(user_id, shop_id);
+            _shopRepository.AddFavorite(user_id, shop_id);
         }
     }
 }

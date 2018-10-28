@@ -136,13 +136,13 @@ namespace TestCMSClient.Client
         {
             Shop shop = new Shop();
             Console.WriteLine("Введите название");
-            shop.name = Console.ReadLine();
+            shop.Name = Console.ReadLine();
             Console.WriteLine("Введите категорию");
-            shop.category = Console.ReadLine();
+            shop.Category = Console.ReadLine();
             Console.WriteLine("Введите x");
-            shop.x = Convert.ToDouble(Console.ReadLine());
+            shop.X = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите y");
-            shop.y = Convert.ToDouble(Console.ReadLine());
+            shop.Y = Convert.ToDouble(Console.ReadLine());
             string res = requestManager.SendPost("Shop/PostShop", shop).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
@@ -152,10 +152,10 @@ namespace TestCMSClient.Client
         {
             User user = new User();
             Console.WriteLine("Введите никнейм");
-            user.nickname = Console.ReadLine();
+            user.Nickname = Console.ReadLine();
             Console.WriteLine("Введите рейтинг");
-            user.raiting = Convert.ToDouble(Console.ReadLine());
-            user.avatar_path = "url"; //TODO change it
+            user.Raiting = Convert.ToDouble(Console.ReadLine());
+            user.AvatarPath = "url"; //TODO change it
             string res = requestManager.SendPost("User/PostUser", user).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
@@ -164,12 +164,12 @@ namespace TestCMSClient.Client
         public void SendUpdateUser(int id)
         {
             User user = new User();
-            user.id = id;
+            user.Id = id;
             Console.WriteLine("Введите никнейм");
-            user.nickname = Console.ReadLine();
+            user.Nickname = Console.ReadLine();
             Console.WriteLine("Введите рейтинг");
-            user.raiting = Convert.ToDouble(Console.ReadLine());
-            user.avatar_path = "url"; //TODO change it
+            user.Raiting = Convert.ToDouble(Console.ReadLine());
+            user.AvatarPath = "url"; //TODO change it
             string res = requestManager.SendPut("User/PutUser", user).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
@@ -178,15 +178,15 @@ namespace TestCMSClient.Client
         public void SendUpdateShop(int id)
         {
             Shop shop = new Shop();
-            shop.id = id;
+            shop.Id = id;
             Console.WriteLine("Введите название");
-            shop.name = Console.ReadLine();
+            shop.Name = Console.ReadLine();
             Console.WriteLine("Введите категорию");
-            shop.category = Console.ReadLine();
+            shop.Category = Console.ReadLine();
             Console.WriteLine("Введите x");
-            shop.x = Convert.ToDouble(Console.ReadLine());
+            shop.X = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите y");
-            shop.y = Convert.ToDouble(Console.ReadLine());
+            shop.Y = Convert.ToDouble(Console.ReadLine());
             string res = requestManager.SendPut("Shop/PutShop", shop).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
@@ -205,8 +205,8 @@ namespace TestCMSClient.Client
             IEnumerable<Favorite> favorites = JsonConvert.DeserializeObject<IEnumerable<Favorite>>(res);
             foreach (Favorite favorite in favorites)
             {
-                Console.WriteLine("nickname = " + favorite.nickname + " avatar_path = " + favorite.avatar_path +
-                                  " shop_name = " + favorite.name);
+                Console.WriteLine("nickname = " + favorite.Nickname + " avatar_path = " + favorite.AvatarPath +
+                                  " shop_name = " + favorite.Name);
             }
         }
 
@@ -224,8 +224,8 @@ namespace TestCMSClient.Client
             IEnumerable<Shop> shops = JsonConvert.DeserializeObject<IEnumerable<Shop>>(res);
             foreach (Shop s in shops)
             {
-                Console.WriteLine("id: " + s.id + " name: " + s.name + " category: " + s.category + " x: " + s.x +
-                                  " y: " + s.y);
+                Console.WriteLine("id: " + s.Id + " name: " + s.Name + " category: " + s.Category + " x: " + s.X +
+                                  " y: " + s.Y);
             }
         }
 
@@ -236,8 +236,8 @@ namespace TestCMSClient.Client
             IEnumerable<Shop> shops = JsonConvert.DeserializeObject<IEnumerable<Shop>>(res);
             foreach (Shop s in shops)
             {
-                Console.WriteLine("id: " + s.id + " name: " + s.name + " category: " + s.category + " x: " + s.x +
-                                  " y: " + s.y);
+                Console.WriteLine("id: " + s.Id + " name: " + s.Name + " category: " + s.Category + " x: " + s.X +
+                                  " y: " + s.Y);
             }
         }
 
@@ -247,8 +247,8 @@ namespace TestCMSClient.Client
             IEnumerable<User> users = JsonConvert.DeserializeObject<IEnumerable<User>>(res);
             foreach (User s in users)
             {
-                Console.WriteLine("id: " + s.id + " name: " + s.nickname + " avatar: " + s.avatar_path + " raiting: " +
-                                  s.raiting);
+                Console.WriteLine("id: " + s.Id + " name: " + s.Nickname + " avatar: " + s.AvatarPath + " raiting: " +
+                                  s.Raiting);
             }
         }
 
@@ -259,8 +259,8 @@ namespace TestCMSClient.Client
             IEnumerable<Shop> shops = JsonConvert.DeserializeObject<IEnumerable<Shop>>(res);
             foreach (Shop s in shops)
             {
-                Console.WriteLine("id: " + s.id + " name: " + s.name + " category: " + s.category + " x: " + s.x +
-                                  " y: " + s.y);
+                Console.WriteLine("id: " + s.Id + " name: " + s.Name + " category: " + s.Category + " x: " + s.X +
+                                  " y: " + s.Y);
             }
         }
 
