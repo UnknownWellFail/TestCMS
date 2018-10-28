@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using TestCMS.Models;
@@ -109,7 +108,7 @@ namespace TestCMSClient.Client
                         int user_id = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Введите id заведения");
                         int shop_id = Convert.ToInt32(Console.ReadLine());
-                        SendAddFavorite(user_id,shop_id);
+                        SendAddFavorite(user_id, shop_id);
                         break;
                     }
 
@@ -127,11 +126,10 @@ namespace TestCMSClient.Client
 
         public void SendAddFavorite(int user_id, int shop_id)
         {
-             KeyValuePair<int,int> favorite = new KeyValuePair<int, int>(user_id,shop_id);
-            string res = requestManager.SendPost("Shop/AddFavorite",favorite).GetAwaiter()
+            KeyValuePair<int, int> favorite = new KeyValuePair<int, int>(user_id, shop_id);
+            string res = requestManager.SendPost("Shop/PostFavorite", favorite).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
-
         }
 
         public void SendAddShop()
@@ -145,10 +143,9 @@ namespace TestCMSClient.Client
             shop.x = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите y");
             shop.y = Convert.ToDouble(Console.ReadLine());
-            string res = requestManager.SendPost("Shop/AddShop",shop).GetAwaiter()
+            string res = requestManager.SendPost("Shop/PostShop", shop).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
-
         }
 
         public void SendAddUser()
@@ -159,7 +156,7 @@ namespace TestCMSClient.Client
             Console.WriteLine("Введите рейтинг");
             user.raiting = Convert.ToDouble(Console.ReadLine());
             user.avatar_path = "url"; //TODO change it
-            string res = requestManager.SendPost("User/AddUser",user).GetAwaiter()
+            string res = requestManager.SendPost("User/PostUser", user).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
         }
@@ -173,11 +170,11 @@ namespace TestCMSClient.Client
             Console.WriteLine("Введите рейтинг");
             user.raiting = Convert.ToDouble(Console.ReadLine());
             user.avatar_path = "url"; //TODO change it
-            string res = requestManager.SendPut("User/UpdateUser",user).GetAwaiter()
+            string res = requestManager.SendPut("User/PutUser", user).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
         }
-        
+
         public void SendUpdateShop(int id)
         {
             Shop shop = new Shop();
@@ -190,17 +187,16 @@ namespace TestCMSClient.Client
             shop.x = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите y");
             shop.y = Convert.ToDouble(Console.ReadLine());
-            string res = requestManager.SendPut("Shop/UpdateShop",shop).GetAwaiter()
+            string res = requestManager.SendPut("Shop/PutShop", shop).GetAwaiter()
                 .GetResult();
             Console.WriteLine(res);
         }
 
-    public void SendRemoveUser(int id)
+        public void SendRemoveUser(int id)
         {
-            string res = requestManager.SendDelete("User/RemoveUser",id).GetAwaiter()
+            string res = requestManager.SendDelete("User/DeleteUser", id).GetAwaiter()
                 .GetResult().ToString();
             Console.WriteLine(res);
-
         }
 
         public void SendFavorites(int id)
@@ -209,20 +205,21 @@ namespace TestCMSClient.Client
             IEnumerable<Favorite> favorites = JsonConvert.DeserializeObject<IEnumerable<Favorite>>(res);
             foreach (Favorite favorite in favorites)
             {
-                Console.WriteLine("nickname = "+favorite.nickname+ " avatar_path = "+favorite.avatar_path + " shop_name = "+favorite.name);
+                Console.WriteLine("nickname = " + favorite.nickname + " avatar_path = " + favorite.avatar_path +
+                                  " shop_name = " + favorite.name);
             }
         }
-        
+
         public void SendRemoveShop(int id)
         {
-            string res = requestManager.SendDelete("Shop/RemoveShop",id).GetAwaiter()
+            string res = requestManager.SendDelete("Shop/DeleteShop", id).GetAwaiter()
                 .GetResult().ToString();
             Console.WriteLine(res);
         }
-        
+
         public void SendAllShopsPlace(double x, double y)
         {
-            string res = requestManager.GetRequest("Shop/AllShopPlace?x="+x+"&y="+y ).GetAwaiter()
+            string res = requestManager.GetRequest("Shop/AllShopPlace?x=" + x + "&y=" + y).GetAwaiter()
                 .GetResult();
             IEnumerable<Shop> shops = JsonConvert.DeserializeObject<IEnumerable<Shop>>(res);
             foreach (Shop s in shops)
@@ -231,7 +228,7 @@ namespace TestCMSClient.Client
                                   " y: " + s.y);
             }
         }
-        
+
         public void SendAllShopsCategory(string category)
         {
             string res = requestManager.GetRequest("Shop/AllShopCategory?category=" + category).GetAwaiter()

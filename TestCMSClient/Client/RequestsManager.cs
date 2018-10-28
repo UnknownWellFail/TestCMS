@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using TestCMS.Models;
 
 namespace TestCMSClient.Client
 {
@@ -24,15 +22,16 @@ namespace TestCMSClient.Client
         public async Task<string> GetRequest(string path)
         {
             string result = null;
-            
+
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
                 result = await response.Content.ReadAsAsync<string>();
             }
+
             return result;
         }
-        
+
         public async Task<string> SendPost(string url, object obj)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
@@ -45,7 +44,7 @@ namespace TestCMSClient.Client
 
             return "Failed";
         }
-        
+
         public async Task<string> SendPut(string url, object obj)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
@@ -58,10 +57,11 @@ namespace TestCMSClient.Client
 
             return "Failed";
         }
+
         public async Task<HttpStatusCode> SendDelete(string url, int id)
         {
             HttpResponseMessage response = await client.DeleteAsync(
-                url+"/"+id);
+                url + "/" + id);
             return response.StatusCode;
         }
     }

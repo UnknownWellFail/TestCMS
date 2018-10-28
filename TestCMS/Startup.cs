@@ -1,12 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TestCMS.Models;
 using TestCMS.Services;
-
 
 namespace TestCMS
 {
@@ -16,9 +12,9 @@ namespace TestCMS
         {
             Configuration = configuration;
         }
- 
+
         public IConfiguration Configuration { get; }
-         
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ShopService>();
@@ -27,7 +23,7 @@ namespace TestCMS
             services.AddMemoryCache();
             services.AddMvc();
         }
-         
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -38,9 +34,9 @@ namespace TestCMS
             {
                 app.UseExceptionHandler("/Main/Error");
             }
- 
+
             app.UseStaticFiles();
- 
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -1,18 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using TestCMS.Repository;
 
 namespace TestCMS.Models
 {
-
-
     public class ShopRepository : IRepository<Shop>
     {
         string connectionString = null;
@@ -28,23 +24,26 @@ namespace TestCMS.Models
         }
 
         public void AddFavorite(int user_id, int shop_id)
-        {Console.WriteLine(user_id);
+        {
+            Console.WriteLine(user_id);
             Console.WriteLine(shop_id);
             using (IDbConnection db = Connection)
             {
-                db.Execute("INSERT INTO favorites (user_id, shop_id) VALUES(@user_id, @shop_id)",new {user_id,shop_id});
+                db.Execute("INSERT INTO favorites (user_id, shop_id) VALUES(@user_id, @shop_id)",
+                    new {user_id, shop_id});
             }
         }
 
-    public IEnumerable<Favorite> getFavorites(int user_id)
+        public IEnumerable<Favorite> getFavorites(int user_id)
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Favorite>("SELECT nickname, avatar_path, name from favorites inner join shops on (favorites.shop_id = shops.id) inner join users on" +
-                                          "(favorites.user_id = users.id) where user_id = @user_id",new{user_id});
+                return db.Query<Favorite>(
+                    "SELECT nickname, avatar_path, name from favorites inner join shops on (favorites.shop_id = shops.id) inner join users on" +
+                    "(favorites.user_id = users.id) where user_id = @user_id", new {user_id});
             }
         }
-        
+
         public IEnumerable<Shop> GetAll()
         {
             using (IDbConnection db = Connection)
@@ -52,12 +51,12 @@ namespace TestCMS.Models
                 return db.Query<Shop>("SELECT * FROM Shops");
             }
         }
- 
+
         public Shop Get(int id)
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Shop>("SELECT * FROM Shops WHERE id = @id", new { id }).FirstOrDefault();
+                return db.Query<Shop>("SELECT * FROM Shops WHERE id = @id", new {id}).FirstOrDefault();
             }
         }
 
@@ -65,20 +64,18 @@ namespace TestCMS.Models
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Shop>("SELECT * FROM Shops WHERE category= @category", new { category});
+                return db.Query<Shop>("SELECT * FROM Shops WHERE category= @category", new {category});
             }
-
         }
-        
+
         public IEnumerable<Shop> Get(double x, double y)
         {
             using (IDbConnection db = Connection)
             {
-                return db.Query<Shop>("SELECT * FROM shops WHERE x= @x AND y= @y", new { x,y});
+                return db.Query<Shop>("SELECT * FROM shops WHERE x= @x AND y= @y", new {x, y});
             }
-
         }
- 
+
         public void Create(Shop shop)
         {
             using (IDbConnection db = Connection)
@@ -87,7 +84,7 @@ namespace TestCMS.Models
                 db.Execute(sqlQuery, shop);
             }
         }
- 
+
         public void Update(Shop shop)
         {
             using (IDbConnection db = Connection)
@@ -96,13 +93,13 @@ namespace TestCMS.Models
                 db.Execute(sqlQuery, shop);
             }
         }
- 
+
         public void Delete(int id)
         {
             using (IDbConnection db = Connection)
             {
                 var sqlQuery = "DELETE FROM shops WHERE id = @id";
-                db.Execute(sqlQuery, new { id });
+                db.Execute(sqlQuery, new {id});
             }
         }
     }

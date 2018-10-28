@@ -1,13 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using TestCMS.Models;
-using TestCMS.Repository;
 using TestCMS.Services;
-
 
 namespace TestCMS.Controllers
 {
@@ -24,7 +20,7 @@ namespace TestCMS.Controllers
         {
             return JsonConvert.SerializeObject(shopService.getFavorites(id).GetAwaiter().GetResult());
         }
-        
+
         //GET all shops
         public string AllShops()
         {
@@ -44,8 +40,7 @@ namespace TestCMS.Controllers
             return JsonConvert.SerializeObject(shopService.getShopPlace(x, y).GetAwaiter().GetResult());
         }
 
-        [HttpPut]
-        public string UpdateShop([FromBody]Shop shop)
+        public string PutShop([FromBody] Shop shop)
         {
             if (ModelState.IsValid)
             {
@@ -57,14 +52,14 @@ namespace TestCMS.Controllers
         }
 
 
-        public string RemoveShop(int id)
+        public string DeleteShop(int id)
         {
             shopService.removeShop(id);
             return "Successful";
         }
 
- 
-        public string AddShop([FromBody]Shop shop)
+
+        public string PostShop([FromBody] Shop shop)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +71,10 @@ namespace TestCMS.Controllers
         }
 
 
-        public string  AddFavorite([FromBody] KeyValuePair<int,int> favorites)
+        public string PostFavorite([FromBody] KeyValuePair<int, int> favorites)
         {
-            shopService.AddFavorite(favorites.Key,favorites.Value);
+            shopService.AddFavorite(favorites.Key, favorites.Value);
             return "Success";
         }
-
     }
 }
